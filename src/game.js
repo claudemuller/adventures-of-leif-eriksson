@@ -38,7 +38,20 @@ ADVENTURE.game = (function (global) {
   }
 
   function render() {
+    // Render location
+    output.innerHTML = map[mapLocation];
+    image.src = `assets/${images[mapLocation]}`;
 
+    // Display an item if there is one in this location
+    for (let i = 0; i < items.length; i++) {
+      if (mapLocation === itemLocations[i]) output.innerHTML += `<br>You see a <strong>${items[i]}</strong> here.`;
+    }
+
+    // Display gmae message
+    output.innerHTML += `<br><em>${gameMessage}</em>`;
+
+    // Display the satchel contents
+    if (satchel.length > 0) output.innerHTML += `<br>You are carrying: ${satchel.join(', ')}`;
   }
 
   function init() {

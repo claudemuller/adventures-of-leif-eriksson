@@ -8,7 +8,7 @@ ADVENTURE.createMap = function () {
   map.push('');
   map.push('');
   map.push('');
-  map.push('');
+  map.push('You arrive at home.');
   map.push('');
   map.push('');
   map.push('');
