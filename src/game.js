@@ -29,23 +29,28 @@ ADVENTURE.game = (function (global) {
     item = '';
 
   function actionClickHandler() {
-    playGame();
+    const playerAction = input.value.toLowerCase();
+    playGame(playerAction);
   }
 
   function northClickHandler() {
+    playGame('north');
   }
 
   function eastClickHandler() {
+    playGame('east');
   }
 
   function southClickHandler() {
+    playGame('south');
   }
 
   function westClickHandler() {
+    playGame('west');
   }
 
-  function playGame() {
-    playerInput = input.value.toLowerCase();
+  function playGame(input) {
+    playerInput = input;
 
     gameMessage = '';
     action = '';
