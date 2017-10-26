@@ -8,13 +8,6 @@ ADVENTURE.game = (function (global) {
     button = document.querySelector('button'),
     image = document.querySelector('img');
 
-  // 0 2 1 3  WATER = 0
-  // 5 0 1 1  LAND = 1
-  // 0 5 0 2  ITEM = 2
-  // 4 0 0 2  HOME = 3
-  //          CANADA = 4
-  //          SEA PERIL = 5
-
   const startLocation = 3,
     actions = ['north', 'east', 'south', 'west', 'take', 'use', 'drop'],
     items = ['wood', 'weapons', 'food'],
@@ -36,6 +29,66 @@ ADVENTURE.game = (function (global) {
   }
 
   function playGame() {
+    playerInput = input.value.toLowerCase();
+
+    gameMessage = '';
+    action = '';
+
+    // Work out player action
+    for (let i = 0; i < actions.length; i++) {
+      if (playerInput.indexOf(actions[i]) > -1) {
+        action = actions[i];
+        console.log(`Player's action: ${action}`);
+        break;
+      }
+    }
+
+    for (let i = 0; i < itemsKnown.length; i++) {
+      if (playerInput.indexOf(itemsKnown[i]) > -1) {
+        item = itemsKnown[i];
+        console.log(`Player's item: ${item}`);
+      }
+    }
+
+    // Choose correct action
+    switch (action) {
+      case 'north':
+        if (mapLocation >= 5) mapLocation -= 5;
+        else gameMessage = blockedPathMessages[mapLocation];
+        break;
+      case 'east':
+        if (mapLocation % 5 !== 2) mapLocation += 1;
+        else gameMessage = blockedPathMessages[mapLocation];
+        break;
+      case 'south':
+        if (mapLocation < 10) mapLocation += 5;
+        else gameMessage = blockedPathMessages[mapLocation];
+        break;
+      case 'west':
+        if (mapLocation % 5 !== 0) mapLocation -= 1;
+        else gameMessage = blockedPathMessages[mapLocation];
+        break;
+      case 'take':
+        takeItem();
+        break;
+      case 'drop':
+        dropItem();
+        break;
+      case 'use':
+        useItem();
+        break;
+    }
+  }
+
+  function takeItem() {
+
+  }
+
+  function dropItem() {
+
+  }
+
+  function useItem() {
 
   }
 
