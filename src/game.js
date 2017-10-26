@@ -5,10 +5,14 @@ window.ADVENTURE = 'ADVENTURE' in window ? window.ADVENTURE : {};
 ADVENTURE.game = (function (global) {
   const output = document.querySelector('#output'),
     input = document.querySelector('#input'),
-    button = document.querySelector('button'),
+    actionBtn = document.querySelector('#action'),
+    northBtn = document.querySelector('#north'),
+    eastBtn = document.querySelector('#east'),
+    southBtn = document.querySelector('#south'),
+    westBtn = document.querySelector('#west'),
     image = document.querySelector('img');
 
-  const startLocation = 3,
+  const startLocation = 4,
     actions = ['north', 'east', 'south', 'west', 'take', 'use', 'drop'],
     items = ['wood', 'weapons', 'food'],
     itemLocations = [1, 15, 11],
@@ -24,8 +28,20 @@ ADVENTURE.game = (function (global) {
     mapLocation = startLocation,
     item = '';
 
-  function clickHandler() {
+  function actionClickHandler() {
     playGame();
+  }
+
+  function northClickHandler() {
+  }
+
+  function eastClickHandler() {
+  }
+
+  function southClickHandler() {
+  }
+
+  function westClickHandler() {
   }
 
   function playGame() {
@@ -77,7 +93,12 @@ ADVENTURE.game = (function (global) {
       case 'use':
         useItem();
         break;
+      default:
+        gameMessage = `I don't understand that.`;
+        break;
     }
+
+    render();
   }
 
   function takeItem() {
@@ -113,8 +134,16 @@ ADVENTURE.game = (function (global) {
     // Display the player's location
     output.innerHTML = map[mapLocation];
 
-    button.style.cursor = 'pointer';
-    button.addEventListener('click', clickHandler, false);
+    actionBtn.style.cursor = 'pointer';
+    actionBtn.addEventListener('click', actionClickHandler, false);
+    northBtn.style.cursor = 'pointer';
+    northBtn.addEventListener('click', northClickHandler, false);
+    eastBtn.style.cursor = 'pointer';
+    eastBtn.addEventListener('click', eastClickHandler, false);
+    southBtn.style.cursor = 'pointer';
+    southBtn.addEventListener('click', southClickHandler, false);
+    westBtn.style.cursor = 'pointer';
+    westBtn.addEventListener('click', westClickHandler, false);
 
     render();
   }
