@@ -1,6 +1,6 @@
 'use strict';
 
-window.ADVENTURE = 'ADVENTURE' in window ? ADVENTURE : {};
+window.ADVENTURE = 'ADVENTURE' in window ? window.ADVENTURE : {};
 
 ADVENTURE.game = (function (global) {
   const output = document.querySelector('#output'),
@@ -9,9 +9,11 @@ ADVENTURE.game = (function (global) {
     image = document.querySelector('img');
 
   // 0 2 1 3  WATER = 0
-  // 0 0 1 1  LAND = 1
-  // 1 0 0 2  ITEM = 2
-  // 2 1 0 2  HOME = 3
+  // 5 0 1 1  LAND = 1
+  // 0 5 0 2  ITEM = 2
+  // 4 0 0 2  HOME = 3
+  //          CANADA = 4
+  //          SEA PERIL = 5
 
   const startLocation = 3,
     actions = ['north', 'east', 'south', 'west', 'take', 'use', 'drop'],
@@ -66,5 +68,5 @@ ADVENTURE.game = (function (global) {
 
   return {
     init
-  }
-})(ADVENTURE);
+  };
+})(window.ADVENTURE);
