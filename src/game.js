@@ -107,15 +107,60 @@ ADVENTURE.game = (function (global) {
   }
 
   function takeItem() {
+    const itemIndexNumber = items.indexOf(item);
 
+    // Does the item exist in the world and is it at player's location
+    if (itemIndexNumber > -1 && itemLocations[itemIndexNumber] === mapLocation) {
+      gameMessage = `You take the ${item}.`;
+
+      satchel.push(item);
+
+      // Remove the item from the world
+      items.splice(itemIndexNumber, 1);
+      itemLocations.splice(itemIndexNumber, 1);
+    } else {
+      gameMessage = `You can't do that.`;
+    }
   }
 
   function dropItem() {
+    if (satchel.length > 0) {
+      const satchelIndexNumber = satchel.indexOf(item);
 
+      if (satchelIndexNumber > -1) {
+        gameMessage = `You drop the ${item}.`;
+
+        // Add to satchel
+        items.push(satchel[satchelIndexNumber]);
+        itemLocations.push(mapLocation);
+
+        // Remove from satchel
+        satchel.splice(satchelIndexNumber, 1);
+      } else {
+        gameMessage = `You can't do that.`;
+      }
+    } else {
+      gameMessage = `You're not carrying anything.`;
+    }
   }
 
   function useItem() {
+    const satchelIndexNumber = satchel.indexOf(item);
 
+    if (satchelIndexNumber > -1) gameMessage = `You're not carrying it.`;
+
+    if (satchel.length === 0) gameMessage += ` Your backpack is empty`;
+
+    // If item is found in satchel
+    if (satchelIndexNumber > -1) {
+      switch (item) {
+        case 'something':
+          gameMessage = 'Some message';
+          break;
+        default:
+          break;
+      }
+    }
   }
 
   function render() {
