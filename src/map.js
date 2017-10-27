@@ -32,16 +32,16 @@ ADVENTURE.createMap = function () {
   map.push('You trek over hill and dale.');
 
   map.push('You sail the open seas.');
-  map.push(`You sail right into a massive whirlpool and end up losing two ships to Ægir.`);
-  map.push(`You sail the open seas.`);
+  map.push('You sail right into a massive whirlpool and end up losing two ships to Ægir.');
+  map.push('You sail the open seas.');
   map.push(`You visit the town's blacksmith and commission a bunch of sharp axes and strong shields.`);
-  map.push(`INSERT some viking thing`);
+  map.push('INSERT some viking thing');
 
-  map.push(`You land on what is today called Canada.`);
-  map.push(`You sail the open seas.`);
-  map.push(`You encounter pirates and take on damages to one of your ships ultimately resulting in its sinking.`);
-  map.push(`You sail the open seas.`);
-  map.push(`You trek over hill and dale.`);
+  map.push('You land on what is today called Canada.');
+  map.push('You sail the open seas.');
+  map.push('You encounter pirates and take on damages to one of your ships ultimately resulting in its sinking.');
+  map.push('You sail the open seas.');
+  map.push('You trek over hill and dale.');
 
   return map;
 };

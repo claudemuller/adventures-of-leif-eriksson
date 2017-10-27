@@ -78,11 +78,11 @@ ADVENTURE.game = (function (global) {
         else gameMessage = blockedPathMessages[mapLocation];
         break;
       case 'east':
-        if (mapLocation % 5 !== 2) mapLocation += 1;
+        if (mapLocation % 5 !== 4) mapLocation += 1;
         else gameMessage = blockedPathMessages[mapLocation];
         break;
       case 'south':
-        if (mapLocation < 10) mapLocation += 5;
+        if (mapLocation < 20) mapLocation += 5;
         else gameMessage = blockedPathMessages[mapLocation];
         break;
       case 'west':
