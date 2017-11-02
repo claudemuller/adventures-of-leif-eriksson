@@ -35,7 +35,7 @@ ADVENTURE.createMap = function () {
   map.push('You sail right into a massive whirlpool and end up losing two ships to Ægir.');
   map.push('You sail the open seas.');
   map.push(`You visit the town's blacksmith and commission a bunch of sharp axes and strong shields.`);
-  map.push('INSERT some viking thing');
+  map.push('you encounter bandits and even though you win, you lose 3 men.');
 
   map.push('You land on what is today called Canada.');
   map.push('You sail the open seas.');
