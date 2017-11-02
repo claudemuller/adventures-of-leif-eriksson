@@ -19,29 +19,29 @@ ADVENTURE.createBlockedPathMessages = function () {
   blockedPathMessages.push('The path is unpassable.');
   blockedPathMessages.push('There is nothing important in this direction.');
 
-  blockedPathMessages.push('X');
+  blockedPathMessages.push('Your crew are too scared to sail in that direction.');
   blockedPathMessages.push('');
   blockedPathMessages.push('');
   blockedPathMessages.push('');
-  blockedPathMessages.push('X');
+  blockedPathMessages.push('The path is unpassable.');
 
-  blockedPathMessages.push('X');
+  blockedPathMessages.push('Your crew are too scared to sail in that direction.');
   blockedPathMessages.push('');
   blockedPathMessages.push('');
   blockedPathMessages.push('');
-  blockedPathMessages.push('X');
+  blockedPathMessages.push('The path is unpassable.');
 
-  blockedPathMessages.push('X');
+  blockedPathMessages.push('Canada has to be around here somewhere.');
   blockedPathMessages.push('');
   blockedPathMessages.push('');
   blockedPathMessages.push('');
-  blockedPathMessages.push('X');
+  blockedPathMessages.push('The path is unpassable.');
 
-  blockedPathMessages.push('X');
-  blockedPathMessages.push('X');
-  blockedPathMessages.push('X');
-  blockedPathMessages.push('X');
-  blockedPathMessages.push('X');
+  blockedPathMessages.push(`You've made it to Canada!`);
+  blockedPathMessages.push('Canada has to be around here somewhere.');
+  blockedPathMessages.push('Your crew are too scared to sail in that direction.');
+  blockedPathMessages.push('Your crew are too scared to sail in that direction.');
+  blockedPathMessages.push(`You can't go that way.`);
 
   return blockedPathMessages;
 };
