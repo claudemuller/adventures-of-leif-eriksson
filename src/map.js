@@ -14,7 +14,7 @@ ADVENTURE.createMap = function () {
   //            LAND PERIL = 6
 
   map.push('You sail the open seas.');
-  map.push('You enter a thick forest of Ash and Elm. Your men proceed to harvest wood to build ships with.');
+  map.push('You enter a thick forest of Ash and Elm. These trees would be perfect to build ships with.');
   map.push('You trek over hill and dale.');
   map.push('You trek over hill and dale.');
   map.push('You step outside of your cosy cabin and proudly survey your domain.');
@@ -22,12 +22,12 @@ ADVENTURE.createMap = function () {
   map.push('You encounter a storm and while the ships are thrown around, you and your crew escape unscathed.');
   map.push('You sail the open seas.');
   map.push('You trek over hill and dale.');
-  map.push('you encounter bandits and even though you win, you lose 3 men.');
+  map.push('You encounter bandits and even though you win, you lose 3 men.');
   map.push('You trek over hill and dale.');
 
   map.push('You sail the open seas.');
   map.push('You sail the open seas.');
-  map.push('You come across a large market in a crowded town. You and your men purchase much needed food and ale for the journey ahead.');
+  map.push('You come across a large market in a crowded town. You find much needed food and ale for sale for the journey ahead.');
   map.push('You trek over hill and dale.');
   map.push('You trek over hill and dale.');
 
@@ -35,9 +35,9 @@ ADVENTURE.createMap = function () {
   map.push('You sail right into a massive whirlpool and end up losing two ships to Ægir.');
   map.push('You sail the open seas.');
   map.push(`You visit the town's blacksmith and commission a bunch of sharp axes and strong shields.`);
-  map.push('you encounter bandits and even though you win, you lose 3 men.');
+  map.push('You encounter bandits and even though you win, you lose 3 men.');
 
-  map.push('You land on what is today called Canada.');
+  map.push('You land on what is today called Canada. You stay here for a winter after which you pack a boat with grapes and head home.');
   map.push('You sail the open seas.');
   map.push('You encounter pirates and take on damages to one of your ships ultimately resulting in its sinking.');
   map.push('You sail the open seas.');

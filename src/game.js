@@ -15,7 +15,7 @@ ADVENTURE.game = (function (global) {
   const startLocation = 4,
     actions = ['north', 'east', 'south', 'west', 'take', 'use', 'drop'],
     items = ['wood', 'weapons', 'food'],
-    itemLocations = [1, 15, 11],
+    itemLocations = [1, 18, 12],
     itemsKnown = ['wood', 'weapons', 'food'],
     satchel = [],
     map = global.createMap(),
@@ -30,6 +30,7 @@ ADVENTURE.game = (function (global) {
 
   function actionClickHandler() {
     const playerAction = input.value.toLowerCase();
+    input.value = '';
     playGame(playerAction);
   }
 

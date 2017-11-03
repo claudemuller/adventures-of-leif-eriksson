@@ -13,35 +13,35 @@ ADVENTURE.createImages = function () {
   //            SEA PERIL = 5
   //            LAND PERIL = 6
 
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
+  images.push('sea.jpg');
+  images.push('forest.jpg');
+  images.push('land.jpg');
+  images.push('land.jpg');
+  images.push('home.jpg');
 
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
+  images.push('storm.jpg');
+  images.push('sea.jpg');
+  images.push('land.jpg');
+  images.push('bandits.jpg');
+  images.push('land.jpg');
 
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
+  images.push('sea.jpg');
+  images.push('sea.jpg');
+  images.push('market.jpg');
+  images.push('land.jpg');
+  images.push('land.jpg');
 
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
+  images.push('sea.jpg');
+  images.push('whirlpool.jpg');
+  images.push('sea.jpg');
+  images.push('blacksmith.jpg');
+  images.push('bandits.jpg');
 
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
-  images.push('');
+  images.push('canada.jpg');
+  images.push('sea.jpg');
+  images.push('pirates.jpg');
+  images.push('sea.jpg');
+  images.push('land.jpg');
 
   return images;
 };
