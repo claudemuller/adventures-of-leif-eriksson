@@ -13,7 +13,7 @@ ADVENTURE.game = (function (global) {
     image = document.querySelector('img');
 
   const startLocation = 4,
-    actions = ['north', 'east', 'south', 'west', 'take', 'use', 'drop'],
+    actions = ['north', 'east', 'south', 'west', 'take', 'use', 'drop', 'buy'],
     items = ['wood', 'weapons', 'food'],
     itemLocations = [1, 18, 12],
     itemsKnown = ['wood', 'weapons', 'food'],
