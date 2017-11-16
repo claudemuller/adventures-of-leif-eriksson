@@ -99,6 +99,9 @@ ADVENTURE.game = (function (global) {
       case 'use':
         useItem();
         break;
+      case 'buy':
+        takeItem('buy');
+        break;
       default:
         gameMessage = `I don't understand that.`;
         break;
@@ -107,12 +110,12 @@ ADVENTURE.game = (function (global) {
     render();
   }
 
-  function takeItem() {
+  function takeItem(verb = 'take') {
     const itemIndexNumber = items.indexOf(item);
 
     // Does the item exist in the world and is it at player's location
     if (itemIndexNumber > -1 && itemLocations[itemIndexNumber] === mapLocation) {
-      gameMessage = `You take the ${item}.`;
+      gameMessage = `You ${verb} the ${item}.`;
 
       satchel.push(item);
 
