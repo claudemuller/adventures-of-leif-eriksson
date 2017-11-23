@@ -61,3 +61,7 @@ button {
 #south {
     margin: 0 25px;
 }
+
+.hide {
+    display: hidden;
+}
