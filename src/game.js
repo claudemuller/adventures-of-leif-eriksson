@@ -21,7 +21,8 @@ ADVENTURE.game = (function (global) {
     map = global.createMap(),
     images = global.createImages(),
     blockedPathMessages = global.createBlockedPathMessages(),
-    water = global.getWater();
+    water = global.getWater(),
+    theEnd = global.theEnd;
 
   let playerInput = '',
     gameMessage = '',
@@ -49,6 +50,10 @@ ADVENTURE.game = (function (global) {
 
   function westClickHandler() {
     playGame('west');
+  }
+
+  function keyHandler(event) {
+    if (event.keyCode === 13) actionClickHandler();
   }
 
   function playGame(input) {
@@ -81,6 +86,8 @@ ADVENTURE.game = (function (global) {
             requirements = canCrossSea(tempMapLocation);
           if (!requirements) mapLocation = tempMapLocation;
           else gameMessage = requirements;
+
+          checkEnd(tempMapLocation);
         } else {
           gameMessage = blockedPathMessages[mapLocation];
         }
@@ -91,6 +98,8 @@ ADVENTURE.game = (function (global) {
             requirements = canCrossSea(tempMapLocation);
           if (!requirements) mapLocation = tempMapLocation;
           else gameMessage = requirements;
+
+          checkEnd(tempMapLocation);
         } else {
           gameMessage = blockedPathMessages[mapLocation];
         }
@@ -101,6 +110,8 @@ ADVENTURE.game = (function (global) {
             requirements = canCrossSea(tempMapLocation);
           if (!requirements) mapLocation = tempMapLocation;
           else gameMessage = requirements;
+
+          checkEnd(tempMapLocation);
         } else {
           gameMessage = blockedPathMessages[mapLocation];
         }
@@ -111,6 +122,8 @@ ADVENTURE.game = (function (global) {
             requirements = canCrossSea(tempMapLocation);
           if (!requirements) mapLocation = tempMapLocation;
           else gameMessage = requirements;
+
+          checkEnd(tempMapLocation);
         } else {
           gameMessage = blockedPathMessages[mapLocation];
         }
@@ -155,6 +168,15 @@ ADVENTURE.game = (function (global) {
     }
 
     return null;
+  }
+
+  function checkEnd(location) {
+    if (location === theEnd) {
+      gameMessage = 'THE END';
+      emptyInventory();
+      disableNavButtons();
+      removeEventListeners();
+    }
   }
 
   function takeItem(verb = 'take') {
@@ -235,6 +257,24 @@ ADVENTURE.game = (function (global) {
     // Display the player's location
     output.innerHTML = map[mapLocation];
 
+    addEventListeners();
+
+    render();
+  }
+
+  function emptyInventory() {
+    satchel.length = 0;
+  }
+
+  function disableNavButtons() {
+    actionBtn.disabled = 'disabled';
+    northBtn.disabled = 'disabled';
+    eastBtn.disabled = 'disabled';
+    southBtn.disabled = 'disabled';
+    westBtn.disabled = 'disabled';
+  }
+
+  function addEventListeners() {
     actionBtn.style.cursor = 'pointer';
     actionBtn.addEventListener('click', actionClickHandler, false);
     northBtn.style.cursor = 'pointer';
@@ -245,11 +285,17 @@ ADVENTURE.game = (function (global) {
     southBtn.addEventListener('click', southClickHandler, false);
     westBtn.style.cursor = 'pointer';
     westBtn.addEventListener('click', westClickHandler, false);
-    window.addEventListener('keypress', (event) => event.keyCode === 13 ? actionClickHandler() : '', false);
-
-    render();
+    window.addEventListener('keypress', keyHandler, false);
   }
 
+  function removeEventListeners() {
+    actionBtn.removeEventListener('click', actionClickHandler, false);
+    northBtn.removeEventListener('click', northClickHandler, false);
+    eastBtn.removeEventListener('click', eastClickHandler, false);
+    southBtn.removeEventListener('click', southClickHandler, false);
+    westBtn.removeEventListener('click', westClickHandler, false);
+    window.removeEventListener('keypress', keyHandler, false);
+  }
   return {
     init
   };

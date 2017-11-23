@@ -51,3 +51,5 @@ ADVENTURE.getWater = function () {
 
   return water;
 };
+
+ADVENTURE.theEnd = 20;
