@@ -161,9 +161,9 @@ ADVENTURE.game = (function (global) {
 
       if (requirements.length > 0) {
         if (requirements.length > 1) requirements[requirements.length - 1] = requirements[requirements.length - 1].replace(',', '');
-        if (requirements.length > 2) requirements[requirements.length - 2] = requirements[requirements.length - 2].replace(',', ' and');
+        if (requirements.length >= 2) requirements[requirements.length - 2] = requirements[requirements.length - 2].replace(',', ' and');
 
-        return `You need ${requirements} before you can cross the perilous seas.`;
+        return `You need ${requirements.join('')} before you can cross the perilous seas.`;
       }
     }
 
