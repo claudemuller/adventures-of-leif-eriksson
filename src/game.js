@@ -272,6 +272,7 @@ ADVENTURE.game = (function (global) {
     eastBtn.disabled = 'disabled';
     southBtn.disabled = 'disabled';
     westBtn.disabled = 'disabled';
+    input.disabled = 'disabled';
   }
 
   function addEventListeners() {
