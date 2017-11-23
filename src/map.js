@@ -45,3 +45,9 @@ ADVENTURE.createMap = function () {
 
   return map;
 };
+
+ADVENTURE.getWater = function () {
+  const water = [0, 5, 6, 10, 11, 15, 16, 17, 21, 22, 23];
+
+  return water;
+};

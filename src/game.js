@@ -13,14 +13,15 @@ ADVENTURE.game = (function (global) {
     image = document.querySelector('img');
 
   const startLocation = 4,
-    actions = ['north', 'east', 'south', 'west', 'take', 'use', 'drop', 'buy'],
+    actions = ['north', 'east', 'south', 'west', 'take', 'use', 'drop', 'buy', 'chop'],
     items = ['wood', 'weapons', 'food'],
     itemLocations = [1, 18, 12],
     itemsKnown = ['wood', 'weapons', 'food'],
     satchel = [],
     map = global.createMap(),
     images = global.createImages(),
-    blockedPathMessages = global.createBlockedPathMessages();
+    blockedPathMessages = global.createBlockedPathMessages(),
+    water = global.getWater();
 
   let playerInput = '',
     gameMessage = '',
@@ -75,20 +76,44 @@ ADVENTURE.game = (function (global) {
     // Choose correct action
     switch (action) {
       case 'north':
-        if (mapLocation >= 5) mapLocation -= 5;
-        else gameMessage = blockedPathMessages[mapLocation];
+        if (mapLocation >= 5) {
+          const tempMapLocation = mapLocation - 5,
+            requirements = canCrossSea(tempMapLocation);
+          if (!requirements) mapLocation = tempMapLocation;
+          else gameMessage = requirements;
+        } else {
+          gameMessage = blockedPathMessages[mapLocation];
+        }
         break;
       case 'east':
-        if (mapLocation % 5 !== 4) mapLocation += 1;
-        else gameMessage = blockedPathMessages[mapLocation];
+        if (mapLocation % 5 !== 4) {
+          const tempMapLocation = mapLocation + 1,
+            requirements = canCrossSea(tempMapLocation);
+          if (!requirements) mapLocation = tempMapLocation;
+          else gameMessage = requirements;
+        } else {
+          gameMessage = blockedPathMessages[mapLocation];
+        }
         break;
       case 'south':
-        if (mapLocation < 20) mapLocation += 5;
-        else gameMessage = blockedPathMessages[mapLocation];
+        if (mapLocation < 20) {
+          const tempMapLocation = mapLocation + 5,
+            requirements = canCrossSea(tempMapLocation);
+          if (!requirements) mapLocation = tempMapLocation;
+          else gameMessage = requirements;
+        } else {
+          gameMessage = blockedPathMessages[mapLocation];
+        }
         break;
       case 'west':
-        if (mapLocation % 5 !== 0) mapLocation -= 1;
-        else gameMessage = blockedPathMessages[mapLocation];
+        if (mapLocation % 5 !== 0) {
+          const tempMapLocation = mapLocation - 1,
+            requirements = canCrossSea(tempMapLocation);
+          if (!requirements) mapLocation = tempMapLocation;
+          else gameMessage = requirements;
+        } else {
+          gameMessage = blockedPathMessages[mapLocation];
+        }
         break;
       case 'take':
         takeItem();
@@ -102,12 +127,34 @@ ADVENTURE.game = (function (global) {
       case 'buy':
         takeItem('buy');
         break;
+      case 'chop':
+        takeItem('chop');
+        break;
       default:
         gameMessage = `I don't understand that.`;
         break;
     }
 
     render();
+  }
+
+  function canCrossSea(location) {
+    if (water.indexOf(location) > -1) {
+      let requirements = [];
+
+      if (satchel.indexOf('wood') === -1) requirements.push('a ship, ');
+      if (satchel.indexOf('food') === -1) requirements.push('food, ');
+      if (satchel.indexOf('weapons') === -1) requirements.push('weapons, ');
+
+      if (requirements.length > 0) {
+        if (requirements.length > 1) requirements[requirements.length - 1] = requirements[requirements.length - 1].replace(',', '');
+        if (requirements.length > 2) requirements[requirements.length - 2] = requirements[requirements.length - 2].replace(',', ' and');
+
+        return `You need ${requirements} before you can cross the perilous seas.`;
+      }
+    }
+
+    return null;
   }
 
   function takeItem(verb = 'take') {
@@ -198,6 +245,7 @@ ADVENTURE.game = (function (global) {
     southBtn.addEventListener('click', southClickHandler, false);
     westBtn.style.cursor = 'pointer';
     westBtn.addEventListener('click', westClickHandler, false);
+    window.addEventListener('keypress', (event) => event.keyCode === 13 ? actionClickHandler() : '', false);
 
     render();
   }
